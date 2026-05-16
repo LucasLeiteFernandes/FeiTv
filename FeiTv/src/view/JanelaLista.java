@@ -73,7 +73,6 @@ public class JanelaLista extends javax.swing.JFrame {
             qtFilmes++;
         }
         
-        System.out.println("\n\nTESTEEEEEEEEEEEEEEEEEEEEE\n\n");
         if(listas.isEmpty() == false){
             qtFilmes = 0;
             int k = 0, qtListaAtual = 0;
