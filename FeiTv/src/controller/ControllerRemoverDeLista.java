@@ -41,8 +41,10 @@ public class ControllerRemoverDeLista {
             Connection conn = conexao.getConnection();
             VideoDAO dao = new VideoDAO(conn);
             if (nomeTabela.compareToIgnoreCase("tbfavoritos") > 0){
+                System.out.println(nomeTabela);
                 dao.remover(filme, user);
             } else {
+                System.out.println(nomeTabela);
                 dao.remover(nomeTabela, filme);
             }
             
@@ -70,6 +72,7 @@ public class ControllerRemoverDeLista {
             String email = user.getEmail().replaceAll("@email.com", "dao");
             lista = lista.replaceAll(" ", "_");
             String tb = "tb" + email + lista;
+            
             dao.remover(tb);
             JOptionPane.showMessageDialog(rl, "Lista removida!", "Erro",
                         JOptionPane.INFORMATION_MESSAGE);
