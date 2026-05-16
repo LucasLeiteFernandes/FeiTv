@@ -1,0 +1,411 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package view;
+
+import controller.ControleHome;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import model.Filme;
+import model.Usuario;
+import model.Lista;
+import controller.ControleJanelaLista;
+import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author lucas
+ */
+public class Home extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Home.class.getName());
+
+    /**
+     * Creates new form Home
+     */
+    public Home(Usuario user, ArrayList<Filme> filmes) {
+        initComponents();
+        ch = new ControleHome(this, user);
+        this.filmes = filmes;
+        this.user = user;
+        lbl_nomeUser.setText(user.getNome());
+        iniciar();
+    }
+
+    public ControleHome getCh() {
+        return ch;
+    }
+
+    public void setCh(ControleHome ch) {
+        this.ch = ch;
+    }
+
+    public JLabel getLbl_logo1() {
+        return lbl_logo;
+    }
+
+    public void setLbl_logo1(JLabel lbl_logo1) {
+        this.lbl_logo = lbl_logo1;
+    }
+
+    public JLabel getLbl_nomeUser() {
+        return lbl_nomeUser;
+    }
+
+    public void setLbl_nomeUser(JLabel lbl_nomeUser) {
+        this.lbl_nomeUser = lbl_nomeUser;
+    }
+
+    public JTextField getTxt_pesquisar() {
+        return txt_pesquisar;
+    }
+
+    public void setTxt_pesquisar(JTextField txt_pesquisar) {
+        this.txt_pesquisar = txt_pesquisar;
+    }
+    
+    
+
+    private void iniciar(){
+    int qtFilmes = 0, qtRomance = 0, qtTerror = 0, qtFiccao = 0, qtMusical = 0;
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    String str;                    
+    
+    for (int i = 0; i < filmes.size(); i++){
+        lbl_poster = new javax.swing.JLabel();
+        str = filmes.get(i).getGenero();
+        System.out.println(filmes.get(i).getTitulo() + " " + str);
+
+        if (str.equalsIgnoreCase("terror")) {
+            criarPoster(160, Color.red, Color.BLACK, lbl_poster, layout, i, qtFilmes - qtTerror, "Old English Text MT");
+            qtTerror++;
+        } else if (str.equalsIgnoreCase("ficcao")) {
+            criarPoster(350, Color.GREEN, Color.BLACK, lbl_poster, layout, i, qtFilmes - qtFiccao, "Lucida Console");
+            qtFiccao++;
+        } else if (str.equalsIgnoreCase("romance")) {
+            criarPoster(540, Color.PINK, Color.BLACK, lbl_poster, layout, i, qtFilmes - qtRomance, "SimSun");
+            qtRomance++;
+        } else if (str.equalsIgnoreCase("musical")) {
+            criarPoster(700, Color.BLUE, Color.WHITE, lbl_poster, layout, i, qtFilmes - qtMusical, "SimSun");
+            qtMusical++;
+        } else {
+            System.out.println("Gênero não reconhecido: " + str);
+        }
+
+        qtFilmes++;
+    }
+}
+    
+    private void criarPoster(int gap, Color cor, Color backgroundColor , JLabel lbl_poster, javax.swing.GroupLayout layout, int i, int j, String font){
+        lbl_poster.setFont(new java.awt.Font(font, 1, 24));
+        lbl_poster.setText("<html>" + filmes.get(i).getTitulo() + "<br>");
+        lbl_poster.setOpaque(true);
+        lbl_poster.setBackground(backgroundColor);
+        lbl_poster.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_poster.setPreferredSize(new java.awt.Dimension(60, 100));
+        lbl_poster.setForeground(cor);
+        lbl_poster.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        
+        lbl_poster.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_posterMouseClicked(evt, filmes.get(i));
+            }
+        });
+
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(150 + (i - j) * 150 , 150 + (i - j) * 150, 150 + (i - j) * 150)
+                .addComponent(lbl_poster, 140, 140, 140))
+        );
+        layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addGap(gap, gap, gap)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lbl_poster, 150, 150, 150))
+            .addContainerGap(0, Short.MAX_VALUE))
+        );
+        pack();          
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 720), new java.awt.Dimension(0, 720), new java.awt.Dimension(32767, 720));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(1080, 720), new java.awt.Dimension(1080, 720), new java.awt.Dimension(1080, 720));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        lbl_nomeUser = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
+        lbl_terror = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        txt_pesquisar = new javax.swing.JTextField();
+        bt_criarLista = new javax.swing.JButton();
+        bt_verListas = new javax.swing.JButton();
+        lbl_terror1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        lbl_terror2 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        lbl_terror3 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pagina Principal");
+        setMaximumSize(new java.awt.Dimension(1600, 720));
+        setMinimumSize(new java.awt.Dimension(1070, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 920));
+        setResizable(false);
+
+        lbl_nomeUser.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lbl_nomeUser.setText("Nome");
+        lbl_nomeUser.setPreferredSize(new java.awt.Dimension(118, 32));
+
+        lbl_logo.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_logo.setText("FeiTv");
+
+        lbl_terror.setFont(new java.awt.Font("Old English Text MT", 1, 24)); // NOI18N
+        lbl_terror.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_terror.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_terror.setText("Terror:");
+        lbl_terror.setInheritsPopupMenu(false);
+        lbl_terror.setOpaque(true);
+        lbl_terror.setPreferredSize(new java.awt.Dimension(118, 32));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(50, 3));
+        jSeparator1.setOpaque(true);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 3));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(50, 3));
+        jSeparator2.setOpaque(true);
+        jSeparator2.setPreferredSize(new java.awt.Dimension(50, 3));
+
+        txt_pesquisar.setText("Pesquisar");
+        txt_pesquisar.addActionListener(this::txt_pesquisarActionPerformed);
+        txt_pesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_pesquisarKeyPressed(evt);
+            }
+        });
+
+        bt_criarLista.setText("Criar lista");
+        bt_criarLista.addActionListener(this::bt_criarListaActionPerformed);
+
+        bt_verListas.setText("Ver listas");
+        bt_verListas.addActionListener(this::bt_verListasActionPerformed);
+
+        lbl_terror1.setFont(new java.awt.Font("Lucida Console", 1, 24)); // NOI18N
+        lbl_terror1.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_terror1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_terror1.setText("Ficção:");
+        lbl_terror1.setInheritsPopupMenu(false);
+        lbl_terror1.setOpaque(true);
+        lbl_terror1.setPreferredSize(new java.awt.Dimension(118, 32));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setMinimumSize(new java.awt.Dimension(50, 3));
+        jSeparator3.setOpaque(true);
+        jSeparator3.setPreferredSize(new java.awt.Dimension(50, 3));
+
+        lbl_terror2.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        lbl_terror2.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_terror2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_terror2.setText("Romance:");
+        lbl_terror2.setInheritsPopupMenu(false);
+        lbl_terror2.setOpaque(true);
+        lbl_terror2.setPreferredSize(new java.awt.Dimension(118, 32));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setMinimumSize(new java.awt.Dimension(50, 3));
+        jSeparator4.setOpaque(true);
+        jSeparator4.setPreferredSize(new java.awt.Dimension(50, 3));
+
+        lbl_terror3.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        lbl_terror3.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_terror3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_terror3.setText("Musical:");
+        lbl_terror3.setInheritsPopupMenu(false);
+        lbl_terror3.setOpaque(true);
+        lbl_terror3.setPreferredSize(new java.awt.Dimension(118, 32));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lbl_logo)
+                .addGap(18, 18, 18)
+                .addComponent(txt_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_criarLista)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_verListas))
+                    .addComponent(lbl_nomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_terror, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_terror1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_terror2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_terror3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_logo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_nomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bt_criarLista)
+                                    .addComponent(bt_verListas)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(txt_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_terror, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_terror1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_terror2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_terror3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_pesquisarActionPerformed
+
+    private void bt_criarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_criarListaActionPerformed
+        // TODO add your handling code here:
+        CriarLista cl = new CriarLista(user);
+        cl.setVisible(true);
+    }//GEN-LAST:event_bt_criarListaActionPerformed
+
+    private void bt_verListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_verListasActionPerformed
+        // TODO add your handling code here:
+        JanelaLista jl = new JanelaLista(user, filmes);
+        jl.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bt_verListasActionPerformed
+
+    private void txt_pesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            System.out.println(txt_pesquisar.getText());
+            
+            ch.pesquisar(user, filmes);
+        } else {
+                
+        }
+    }//GEN-LAST:event_txt_pesquisarKeyPressed
+
+    private void lbl_posterMouseClicked(java.awt.event.MouseEvent evt, Filme filme) {                                            
+        // TODO add your handling code here:
+        Reproducao r;
+        r = new Reproducao(filme, user, filmes);
+        r.setVisible(true);
+        this.setVisible(false);
+    }  
+    /**
+     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+//            logger.log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> new Home().setVisible(true));
+//    }
+    
+    private ControleHome ch;
+    private ArrayList<Filme> filmes;
+    private Usuario user;
+    private JLabel lbl_poster;
+    private Lista fav;
+    private ArrayList<Lista> listas;
+    
+    
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_criarLista;
+    private javax.swing.JButton bt_verListas;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_nomeUser;
+    private javax.swing.JLabel lbl_terror;
+    private javax.swing.JLabel lbl_terror1;
+    private javax.swing.JLabel lbl_terror2;
+    private javax.swing.JLabel lbl_terror3;
+    private javax.swing.JTextField txt_pesquisar;
+    // End of variables declaration//GEN-END:variables
+}
