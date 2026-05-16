@@ -73,7 +73,6 @@ public class JanelaLista extends javax.swing.JFrame {
             qtFilmes++;
         }
         
-        System.out.println("\n\nTESTEEEEEEEEEEEEEEEEEEEEE\n\n");
         if(listas.isEmpty() == false){
             qtFilmes = 0;
             int k = 0, qtListaAtual = 0;
@@ -91,11 +90,10 @@ public class JanelaLista extends javax.swing.JFrame {
                 for (int j = 0; j < listas.get(i).getLista().size(); j++){
                     lbl_poster = new javax.swing.JLabel();
                     Filme filme = listas.get(i).getLista().get(j);
-                    str = filme.getGenero();
-                    System.out.println(filme.toString() + "\n\n");
-                    //System.out.println(filmes.get(i).toString());
+                    str = filmes.get(i).getGenero();
+                    System.out.println(filmes.get(i).getTitulo() + " " + str);
 
-                     if (str.compareToIgnoreCase("terror") >= 0){
+                     if ((str.equalsIgnoreCase("terror"))){
                         criarPoster(filme, 160 + gap * (j + 1) + gap * k, Color.red,Color.BLACK, lbl_poster, layout, i, qtFilmes - qtListaAtual,"Old English Text MT", listaAtual);
                     }else if (str.equalsIgnoreCase("ficcao")) {
                         criarPoster(filme, 160 + gap * (j + 1) + gap * k, Color.GREEN, Color.BLACK, lbl_poster, layout, i, qtFilmes - qtListaAtual, "Lucida Console", listaAtual);
@@ -392,11 +390,6 @@ public class JanelaLista extends javax.swing.JFrame {
                 RemoverDeLista rl = new RemoverDeLista(tb, filme.getTitulo(), user);
                 rl.setVisible(true);
             }
-            String email = user.getEmail().replaceAll("@email.com", "dao");
-            tbNome = tbNome.replaceAll(" ", "_");
-            String tb = "tb" + email + tbNome;
-            
-            
             System.out.println("botao direito");
         }
     }  

@@ -119,6 +119,7 @@ public class ControleJanelaLista {
                             double avaliacoes = res2.getDouble("avaliacoes");
                             int nAvaliacoes = res2.getInt("nAvaliacoes");
                             filmes.add(new Filme(titulo, descricao, genero, horas, minutos, segundos, avaliacoes, nAvaliacoes));
+                            System.out.println(titulo + " " + genero);
                         }
                         listas.add(new Lista(nomeLista, filmes));
                     }catch(SQLException e){

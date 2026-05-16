@@ -78,7 +78,7 @@ public class Home extends javax.swing.JFrame {
     for (int i = 0; i < filmes.size(); i++){
         lbl_poster = new javax.swing.JLabel();
         str = filmes.get(i).getGenero();
-        //System.out.println(filmes.get(i).getTitulo() + " " + str);
+        System.out.println(filmes.get(i).getTitulo() + " " + str);
 
         if (str.equalsIgnoreCase("terror")) {
             criarPoster(160, Color.red, Color.BLACK, lbl_poster, layout, i, qtFilmes - qtTerror, "Old English Text MT");
