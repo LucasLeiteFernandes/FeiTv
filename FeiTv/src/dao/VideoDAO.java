@@ -181,7 +181,7 @@ public class VideoDAO {
     
     public void remover (String tbNome) throws SQLException{
         String sql = "DROP TABLE IF EXISTS public." + tbNome;
-        System.out.println(sql);
+        //System.out.println(sql);
         PreparedStatement stat = conn.prepareStatement(sql);
         stat.execute();
         conn.close();

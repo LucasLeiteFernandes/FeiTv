@@ -40,11 +40,11 @@ public class ControllerRemoverDeLista {
         try{
             Connection conn = conexao.getConnection();
             VideoDAO dao = new VideoDAO(conn);
-            if (nomeTabela.compareToIgnoreCase("tbfavoritos") > 0){
-                System.out.println(nomeTabela);
+            if (nomeTabela.equalsIgnoreCase("tbfavoritos")){
+                //System.out.println(nomeTabela);
                 dao.remover(filme, user);
             } else {
-                System.out.println(nomeTabela);
+                //System.out.println(nomeTabela);
                 dao.remover(nomeTabela, filme);
             }
             

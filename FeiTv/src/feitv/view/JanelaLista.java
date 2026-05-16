@@ -90,7 +90,7 @@ public class JanelaLista extends javax.swing.JFrame {
                 for (int j = 0; j < listas.get(i).getLista().size(); j++){
                     lbl_poster = new javax.swing.JLabel();
                     Filme filme = listas.get(i).getLista().get(j);
-                    str = filmes.get(i).getGenero();
+                    str = filme.getGenero();
                     System.out.println(filmes.get(i).getTitulo() + " " + str);
 
                      if ((str.equalsIgnoreCase("terror"))){

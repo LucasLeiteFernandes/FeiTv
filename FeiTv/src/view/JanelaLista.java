@@ -388,15 +388,11 @@ public class JanelaLista extends javax.swing.JFrame {
                 String email = user.getEmail().replaceAll("@email.com", "dao");
                 tbNome = tbNome.replaceAll(" ", "_");
                 String tb = "tb" + email + tbNome;
+                System.out.print("\n"+ tb);
                 RemoverDeLista rl = new RemoverDeLista(tb, filme.getTitulo(), user);
                 rl.setVisible(true);
             }
-            String email = user.getEmail().replaceAll("@email.com", "dao");
-            tbNome = tbNome.replaceAll(" ", "_");
-            String tb = "tb" + email + tbNome;
-            
-            
-            System.out.println("botao direito");
+            //System.out.println("botao direito");
         }
     }  
     

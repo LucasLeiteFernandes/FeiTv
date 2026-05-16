@@ -16,7 +16,6 @@ Permite **cadastro e login de usuários**, **menu interativo de filmes separado 
 
 ```bash
 git clone https://github.com/LucasLeiteFernandes/FeiTv
-cd Feifood
 ```
 
 ### 🔹 2. Configurar o banco de dados
@@ -34,3 +33,5 @@ cd Feifood
 - Abrir a pasta FeiTv no Apache NetBeans
 - Abrir o pacote feitv
 - Abrir o arquivo FeiTv.java e executar com 'shift + f6'
+
+---
